@@ -5,6 +5,8 @@ from yandex_checkout.domain.models.payment_data.card_type import CardType
 from yandex_checkout.domain.models.payment_data.request.credit_card import CreditCard as RequestCreditCard
 from yandex_checkout.domain.models.payment_data.request.payment_data_alfabank import \
     PaymentDataAlfabank as RequestPaymentDataAlfabank
+from yandex_checkout.domain.models.payment_data.request.payment_data_applepay import \
+    PaymentDataApplepay as RequestPaymentDataApplepay
 from yandex_checkout.domain.models.payment_data.request.payment_data_cash import \
     PaymentDataCash as RequestPaymentDataCash
 from yandex_checkout.domain.models.payment_data.request.payment_data_bank_card import \
@@ -18,6 +20,8 @@ from yandex_checkout.domain.models.payment_data.request.payment_data_qiwi import
 from yandex_checkout.domain.models.payment_data.response.credit_card import CreditCard as ResponseCreditCard
 from yandex_checkout.domain.models.payment_data.response.payment_data_alfabank import \
     PaymentDataAlfabank as ResponsePaymentDataAlfabank
+from yandex_checkout.domain.models.payment_data.response.payment_data_applepay import \
+    PaymentDataApplepay as ResponsePaymentdataApplepay
 from yandex_checkout.domain.models.payment_data.response.payment_data_cash import \
     PaymentDataCash as ResponsePaymentDataCash
 from yandex_checkout.domain.models.payment_data.response.payment_data_bank_card import \
@@ -191,3 +195,14 @@ class PaymentDataTest(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             payment_data.phone = 'invalid phone'
+
+    def test_applepay_cast(self):
+        payment_data = RequestPaymentDataApplepay()
+        payment_data.payment_data = 'sampletoken'
+
+        self.assertEqual({'type': PaymentMethodType.APPLEPAY, 'payment_data': 'sampletoken'}, dict(payment_data))
+
+        payment_data = ResponsePaymentdataApplepay()
+        payment_data.payment_data = 'sampletoken'
+
+        self.assertEqual({'type': PaymentMethodType.APPLEPAY, 'payment_data': 'sampletoken'}, dict(payment_data))
