@@ -1,10 +1,10 @@
 import re
 
 from yandex_checkout.domain.common.payment_method_type import PaymentMethodType
-from yandex_checkout.domain.models.payment_data.payment_data import PaymentData
+from yandex_checkout.domain.models.payment_data.payment_data import ResponsePaymentData
 
 
-class PaymentDataMobileBalance(PaymentData):
+class PaymentDataMobileBalance(ResponsePaymentData):
     __phone = None
 
     def __init__(self, *args, **kwargs):

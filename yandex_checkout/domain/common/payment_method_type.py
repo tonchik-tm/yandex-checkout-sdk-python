@@ -19,3 +19,4 @@ class PaymentMethodType:
     QIWI = 'qiwi'
     WEBMONEY = 'webmoney'
     ALFABANK = 'alfabank'
+    APPLEPAY = 'apple_pay'

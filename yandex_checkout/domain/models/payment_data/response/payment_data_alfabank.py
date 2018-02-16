@@ -1,12 +1,11 @@
 from yandex_checkout.domain.common.payment_method_type import PaymentMethodType
-from yandex_checkout.domain.models.payment_data.payment_data import PaymentData
+from yandex_checkout.domain.models.payment_data.payment_data import ResponsePaymentData
 
 
-class PaymentDataAlfabank(PaymentData):
+class PaymentDataAlfabank(ResponsePaymentData):
     __login = None
 
     def __init__(self, *args, **kwargs):
-        # super().__init__(*args, **kwargs)
         super(PaymentDataAlfabank, self).__init__(*args, **kwargs)
         if self.type is None or self.type is not PaymentMethodType.ALFABANK:
             self.type = PaymentMethodType.ALFABANK
