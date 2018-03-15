@@ -55,7 +55,6 @@ class CreditCard(BaseObject):
 
     @card_type.setter
     def card_type(self, value):
-        print(value)
         if value in CardType.__dict__.values():
             self.__card_type = value
         else:
