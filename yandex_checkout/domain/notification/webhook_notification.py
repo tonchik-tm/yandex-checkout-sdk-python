@@ -27,7 +27,7 @@ class WebhookNotification(BaseObject):
 
     @property
     def object(self):
-        return self.__event
+        return self.__object
 
     @object.setter
     def object(self, value):
