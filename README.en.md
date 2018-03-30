@@ -1,0 +1,62 @@
+# Yandex.Checkout API Python Client Library
+
+[Russian](https://github.com/yandex-money/yandex-checkout-sdk-python/blob/master/README.md) | English
+
+This product is used for managing payments under [The Yandex.Checkout API](https://kassa.yandex.ru/docs/checkout-api/)
+For usage by those who implemented Yandex.Checkout using the API method.
+
+## Requirements
+1. Python 2.7 or Python 3.x
+2. pip
+
+## Installation
+### Under console using pip
+
+1. Install pip.
+2. In the console, run the following command:
+```bash
+pip install --upgrade yandex_checkout
+```
+
+### Under console using easy_install
+1. Install easy_install.
+2. In the console, run the following command:
+```bash
+easy_install --upgrade yandex_checkout
+```
+
+### Manually
+
+1. In the console, run the following command:
+```bash
+wget https://pypi.python.org/packages/5a/be/5eafdfb14aa6f32107e9feb6514ca1ad3fe56f8e5ee59d20693b32f7e79f/yandex_checkout-1.0.0.tar.gz#md5=46595279b5578fd82a199bfd4cd51db2
+tar zxf yandex_checkout-1.0.0.tar.gz
+cd yandex_checkout-1.0.0
+python setup.py install
+```
+
+
+## Commencing work
+
+1. Import module
+```python
+import yandex_checkout
+```
+
+2. Configure a Client
+```python
+from yandex_checkout import Configuration
+
+Configuration.configure(<Account Id>,<Secret Key>)
+```
+
+or
+
+```python
+from yandex_checkout import Configuration
+
+Configuration.account_id = <Account Id>
+Configuration.secret_key = <Secret Key>
+```
+3. Call the required API method. [More details in our documentation for the Yandex.Chechout API](url)
+

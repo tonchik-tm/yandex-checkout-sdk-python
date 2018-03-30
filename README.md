@@ -1,5 +1,6 @@
-
 # Yandex.Checkout API Python Client Library
+
+Russian | [English](https://github.com/yandex-money/yandex-checkout-sdk-python/blob/master/README.en.md)
 
 Клиент для работы с платежами по [API Яндекс.Кассы](https://kassa.yandex.ru/docs/checkout-api/)
 Подходит тем, у кого способ подключения к Яндекс.Кассе называется API.
@@ -57,4 +58,5 @@ Configuration.account_id = <Идентификатор магазина>
 Configuration.secret_key = <Секретный ключ>
 ```
 3. Вызовите нужный метод API. [Подробнее в документации к API Яндекс.Кассы](https://kassa.yandex.ru/docs/checkout-api/)
+
 

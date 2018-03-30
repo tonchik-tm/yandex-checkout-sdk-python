@@ -13,6 +13,10 @@ class PaymentRequestBuilder(object):
         self.__request.amount = value
         return self
 
+    def set_description(self, value):
+        self.__request.description = value
+        return self
+
     def set_receipt(self, value):
         self.__request.receipt = value
         return self
@@ -43,6 +47,10 @@ class PaymentRequestBuilder(object):
 
     def set_client_ip(self, value):
         self.__request.client_ip = value
+        return self
+
+    def set_airline(self, value):
+        self.__request.airline = value
         return self
 
     def set_metadata(self, value):
