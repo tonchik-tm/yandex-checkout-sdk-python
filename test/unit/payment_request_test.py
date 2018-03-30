@@ -2,6 +2,7 @@ import unittest
 
 from yandex_checkout.domain.common.confirmation_type import ConfirmationType
 from yandex_checkout.domain.common.payment_method_type import PaymentMethodType
+from yandex_checkout.domain.models.airline import Airline
 from yandex_checkout.domain.models.amount import Amount
 from yandex_checkout.domain.models.confirmation.confirmation import Confirmation
 from yandex_checkout.domain.models.confirmation.request.confirmation_redirect import ConfirmationRedirect
@@ -18,6 +19,7 @@ class PaymentRequestTest(unittest.TestCase):
         self.maxDiff = None
         request = PaymentRequest()
         request.amount = Amount({'value': 0.1, 'currency': Currency.RUB})
+        request.description = 'Test description'
         request.recipient = Recipient({
             'account_id': '213',
             'gateway_id': '123'
@@ -57,6 +59,7 @@ class PaymentRequestTest(unittest.TestCase):
                 'account_id': '213',
                 'gateway_id': '123'
             },
+            'description': 'Test description',
             'save_payment_method': True,
             'capture': False,
             'payment_method_data': {'type': PaymentMethodType.WEBMONEY},

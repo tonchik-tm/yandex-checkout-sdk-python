@@ -1,4 +1,5 @@
 from yandex_checkout.domain.common.request_object import RequestObject
+from yandex_checkout.domain.models.airline import Airline
 from yandex_checkout.domain.models.amount import Amount
 from yandex_checkout.domain.models.confirmation.confirmation import Confirmation
 from yandex_checkout.domain.models.confirmation.confirmation_factory import ConfirmationFactory
@@ -12,6 +13,8 @@ class PaymentRequest(RequestObject):
     __recipient = None
 
     __amount = None
+
+    __description = None
 
     __receipt = None
 
@@ -28,6 +31,8 @@ class PaymentRequest(RequestObject):
     __capture = None
 
     __client_ip = None
+
+    __airline = None
 
     __metadata = None
 
@@ -56,6 +61,18 @@ class PaymentRequest(RequestObject):
             self.__amount = value
         else:
             raise TypeError('Invalid amount value type')
+
+    @property
+    def description(self):
+        return self.__description
+
+    @description.setter
+    def description(self, value):
+        cast_value = str(value)
+        if cast_value and len(cast_value) <= 128:
+            self.__description = cast_value
+        else:
+            raise ValueError('Invalid description value')
 
     @property
     def receipt(self):
@@ -141,6 +158,19 @@ class PaymentRequest(RequestObject):
     @client_ip.setter
     def client_ip(self, value):
         self.__client_ip = str(value)
+
+    @property
+    def airline(self):
+        return self.__airline
+
+    @airline.setter
+    def airline(self, value):
+        if isinstance(value, dict):
+            self.__airline = Airline(value)
+        elif isinstance(value, Airline):
+            self.__airline = value
+        else:
+            raise TypeError('Invalid airline type')
 
     @property
     def metadata(self):

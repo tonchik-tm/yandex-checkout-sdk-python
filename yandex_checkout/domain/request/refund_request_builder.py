@@ -13,8 +13,8 @@ class RefundRequestBuilder(object):
         self.__request.amount = value
         return self
 
-    def set_comment(self, value):
-        self.__request.comment = value
+    def set_description(self, value):
+        self.__request.description = value
         return self
 
     def set_receipt(self, value):

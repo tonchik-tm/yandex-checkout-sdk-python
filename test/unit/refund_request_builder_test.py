@@ -6,9 +6,10 @@ from yandex_checkout.domain.request.refund_request_builder import RefundRequestB
 
 class RefundRequestBuilderTest(unittest.TestCase):
     def test_build_request(self):
+        self.maxDiff = None
         builder = RefundRequestBuilder()
         request = builder.set_amount({'value': 0.1, 'currency': Currency.RUB}) \
-            .set_comment('test comment') \
+            .set_description('test comment') \
             .set_payment_id('21a632d2-000f-5061-a000-01e90bc2de12') \
             .set_receipt(
             {'phone': '79990000000', 'email': 'test@email', 'tax_system_code': 1, 'items': [
@@ -35,7 +36,7 @@ class RefundRequestBuilderTest(unittest.TestCase):
 
         self.assertEqual({
             'payment_id': '21a632d2-000f-5061-a000-01e90bc2de12',
-            'comment': 'test comment',
+            'description': 'test comment',
             'receipt': {'phone': '79990000000', 'email': 'test@email', 'tax_system_code': 1, 'items': [
                 {
                     "description": "Product 1",

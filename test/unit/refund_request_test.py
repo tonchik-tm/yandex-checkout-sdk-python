@@ -8,9 +8,10 @@ from yandex_checkout.domain.request.refund_request import RefundRequest
 
 class RefundRequestTest(unittest.TestCase):
     def test_refund_cast(self):
+        self.maxDiff = None
         request = RefundRequest()
         request.payment_id = '21a632d2-000f-5061-a000-01e90bc2de12'
-        request.comment = 'test comment'
+        request.description = 'test comment'
         request.receipt = Receipt({'phone': '79990000000', 'email': 'test@email', 'tax_system_code': 1, 'items': [
             {
                 "description": "Product 1",
@@ -36,7 +37,7 @@ class RefundRequestTest(unittest.TestCase):
 
         self.assertEqual({
             'payment_id': '21a632d2-000f-5061-a000-01e90bc2de12',
-            'comment': 'test comment',
+            'description': 'test comment',
             'receipt': {'phone': '79990000000', 'email': 'test@email', 'tax_system_code': 1, 'items': [
                 {
                     "description": "Product 1",
@@ -63,7 +64,7 @@ class RefundRequestTest(unittest.TestCase):
     def test_request_setters(self):
         request = RefundRequest({
             'payment_id': '21a632d2-000f-5061-a000-01e90bc2de12',
-            'comment': 'test comment',
+            'description': 'test comment',
             'receipt': {'phone': '79990000000', 'email': 'test@email', 'tax_system_code': 1, 'items': [
                 {
                     "description": "Product 1",
@@ -102,7 +103,7 @@ class RefundRequestTest(unittest.TestCase):
             request.payment_id = 'invalid payment_id'
 
         with self.assertRaises(ValueError):
-            request.comment = ''
+            request.description = ''
 
     def test_request_validate(self):
         request = RefundRequest()

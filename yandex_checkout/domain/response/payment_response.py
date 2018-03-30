@@ -20,6 +20,8 @@ class PaymentResponse(ResponseObject):
 
     __amount = None
 
+    __description = None
+
     __payment_method = None
 
     __created_at = None
@@ -69,6 +71,14 @@ class PaymentResponse(ResponseObject):
     @amount.setter
     def amount(self, value):
         self.__amount = Amount(value)
+
+    @property
+    def description(self):
+        return self.__description
+
+    @description.setter
+    def description(self, value):
+        self.__description = value
 
     @property
     def payment_method(self):
