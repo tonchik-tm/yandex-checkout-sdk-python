@@ -11,6 +11,8 @@ from yandex_checkout.domain.models.payment_data.request.payment_data_cash import
     PaymentDataCash as RequestPaymentDataCash
 from yandex_checkout.domain.models.payment_data.request.payment_data_bank_card import \
     PaymentDataBankCard as RequestPaymentDataBankCard
+from yandex_checkout.domain.models.payment_data.request.payment_data_installments import \
+    PaymentDataInstallments as RequestPaymentDataInstallments
 from yandex_checkout.domain.models.payment_data.request.payment_data_mobile_balance import \
     PaymentDataMobileBalance as RequestPaymentDataMobileBalance
 from yandex_checkout.domain.models.payment_data.request.payment_data_sberbank import \
@@ -26,6 +28,8 @@ from yandex_checkout.domain.models.payment_data.response.payment_data_cash impor
     PaymentDataCash as ResponsePaymentDataCash
 from yandex_checkout.domain.models.payment_data.response.payment_data_bank_card import \
     PaymentDataBankCard as ResponsePaymentDataBankCard
+from yandex_checkout.domain.models.payment_data.response.payment_data_installments import \
+    PaymentDataInstallments as ResponcePaymentDataInstallments
 from yandex_checkout.domain.models.payment_data.response.payment_data_mobile_balance import \
     PaymentDataMobileBalance as ResponsePaymentDataMobileBalance
 from yandex_checkout.domain.models.payment_data.response.payment_data_sberbank import \
@@ -206,3 +210,10 @@ class PaymentDataTest(unittest.TestCase):
         payment_data.payment_data = 'sampletoken'
 
         self.assertEqual({'type': PaymentMethodType.APPLEPAY, 'payment_data': 'sampletoken'}, dict(payment_data))
+
+    def test_installments_cast(self):
+        payment_data = RequestPaymentDataInstallments()
+        self.assertEqual({'type': PaymentMethodType.INSTALMENTS}, dict(payment_data))
+
+        payment_data = ResponcePaymentDataInstallments()
+        self.assertEqual({'type': PaymentMethodType.INSTALMENTS}, dict(payment_data))

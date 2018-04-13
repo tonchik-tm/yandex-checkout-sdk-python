@@ -8,6 +8,8 @@ from yandex_checkout.domain.models.payment_data.request.payment_data_cash import
     PaymentDataCash as RequestPaymentDataCash
 from yandex_checkout.domain.models.payment_data.request.payment_data_bank_card import \
     PaymentDataBankCard as RequestPaymentDataBankCard
+from yandex_checkout.domain.models.payment_data.request.payment_data_installments import \
+    PaymentDataInstallments as RequestPaymentDataInstallments
 from yandex_checkout.domain.models.payment_data.request.payment_data_mobile_balance import \
     PaymentDataMobileBalance as RequestPaymentDataMobileBalance
 from yandex_checkout.domain.models.payment_data.request.payment_data_sberbank import \
@@ -27,6 +29,8 @@ from yandex_checkout.domain.models.payment_data.response.payment_data_cash impor
     PaymentDataCash as ResponsePaymentDataCash
 from yandex_checkout.domain.models.payment_data.response.payment_data_bank_card import \
     PaymentDataBankCard as ResponsePaymentDataBankCard
+from yandex_checkout.domain.models.payment_data.response.payment_data_installments import \
+    PaymentDataInstallments as ResponcePaymentDataInstallments
 from yandex_checkout.domain.models.payment_data.response.payment_data_mobile_balance import \
     PaymentDataMobileBalance as ResponsePaymentDataMobileBalance
 from yandex_checkout.domain.models.payment_data.response.payment_data_sberbank import \
@@ -54,7 +58,8 @@ class PaymentDataClassMap(DataContext):
             PaymentMethodType.YANDEX_MONEY: RequestPaymentDataYandexWallet,
             PaymentMethodType.QIWI: RequestPaymentDataQiwi,
             PaymentMethodType.WEBMONEY: RequestPaymentDataWebmoney,
-            PaymentMethodType.APPLEPAY: RequestPaymentDataApplepay
+            PaymentMethodType.APPLEPAY: RequestPaymentDataApplepay,
+            PaymentMethodType.INSTALMENTS: RequestPaymentDataInstallments
         }
 
     @property
@@ -68,5 +73,6 @@ class PaymentDataClassMap(DataContext):
             PaymentMethodType.YANDEX_MONEY: ResponsePaymentDataYandexWallet,
             PaymentMethodType.QIWI: ResponsePaymentDataQiwi,
             PaymentMethodType.WEBMONEY: ResponsePaymentDataWebmoney,
-            PaymentMethodType.APPLEPAY: ResponsePaymentDataApplepay
+            PaymentMethodType.APPLEPAY: ResponsePaymentDataApplepay,
+            PaymentMethodType.INSTALMENTS: ResponcePaymentDataInstallments
         }

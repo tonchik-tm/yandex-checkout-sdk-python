@@ -10,6 +10,7 @@ class PaymentMethodType:
     * yandex_checkout.domain.common.PaymentMethodType.QIWI
     * yandex_checkout.domain.common.PaymentMethodType.WEBMONEY
     * yandex_checkout.domain.common.PaymentMethodType.ALFABANK
+    * yandex_checkout.domain.common.PaymentMethodType.INSTALMENTS
     """
     YANDEX_MONEY = 'yandex_money'
     BANK_CARD = 'bank_card'
@@ -20,3 +21,4 @@ class PaymentMethodType:
     WEBMONEY = 'webmoney'
     ALFABANK = 'alfabank'
     APPLEPAY = 'apple_pay'
+    INSTALMENTS = 'installments'
