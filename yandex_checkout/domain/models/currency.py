@@ -5,3 +5,7 @@ class Currency(object):
     RUB = "RUB"
     USD = "USD"
     EUR = "EUR"
+    BYN = "BYN"
+    CNY = "CNY"
+    KZT = "KZT"
+    UAH = "UAH"
