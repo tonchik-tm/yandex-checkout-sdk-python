@@ -4,6 +4,7 @@ from yandex_checkout.client import ApiClient
 from yandex_checkout.domain.common.http_verb import HttpVerb
 from yandex_checkout.domain.request.capture_payment_request import CapturePaymentRequest
 from yandex_checkout.domain.request.payment_request import PaymentRequest
+from yandex_checkout.domain.response.payment_list_responce import PaymentListResponse
 from yandex_checkout.domain.response.payment_response import PaymentResponse
 
 
@@ -113,3 +114,11 @@ class Payment:
         }
         response = instance.client.request(HttpVerb.POST, path, None, headers)
         return PaymentResponse(response)
+
+    @classmethod
+    def list(cls, params):
+        instance = cls()
+        path = cls.base_path
+
+        response = instance.client.request(HttpVerb.GET, path, params)
+        return PaymentListResponse(response)

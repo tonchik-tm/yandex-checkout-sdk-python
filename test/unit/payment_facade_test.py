@@ -6,6 +6,7 @@ from yandex_checkout.domain.models.amount import Amount
 from yandex_checkout.domain.models.payment_data.response.payment_data_bank_card import PaymentDataBankCard
 from yandex_checkout.domain.request.capture_payment_request import CapturePaymentRequest
 from yandex_checkout.domain.request.payment_request import PaymentRequest
+from yandex_checkout.domain.response.payment_list_responce import PaymentListResponse
 from yandex_checkout.domain.response.payment_response import PaymentResponse
 from yandex_checkout.payment import Payment
 
@@ -285,6 +286,45 @@ class PaymentFacadeTest(unittest.TestCase):
         self.assertIsInstance(payment, PaymentResponse)
         self.assertIsInstance(payment.amount, Amount)
         self.assertIsInstance(payment.payment_method, PaymentDataBankCard)
+
+    def test_payment_list(self):
+        payment_facade = Payment()
+        with patch('yandex_checkout.client.ApiClient.request') as request_mock:
+            request_mock.return_value = {
+                'items': [
+                    {
+                        'amount': {'currency': 'RUB', 'value': 2025.0},
+                        'captured_at': '2018-08-02T08:26:26.067Z',
+                        'created_at': '2018-08-02T08:25:03.280Z',
+                        'description': 'Оплата заказа №69',
+                        'id': '22f4d39f-000f-5000-9000-1549325826d3',
+                        'metadata': {'module_version': '1.0.13', 'order_id': '69'},
+                        'paid': True,
+                        'payment_method': {
+                            'card': {
+                                'card_type': 'Unknown',
+                                'expiry_month': '10',
+                                'expiry_year': '2020',
+                                'last4': '1026'
+                            },
+                            'id': '22f4d39f-000f-5000-9000-1549325826d3', 'saved': False, 'title': 'BANK_CARD 1026',
+                            'type': 'bank_card'
+                        },
+                        'receipt_registration': 'canceled',
+                        'recipient': {'account_id': '502704', 'gateway_id': '1512688'},
+                        'refunded_amount': {'value': '0.00', 'currency': 'RUB'},
+                        'status': 'succeeded'
+                    }
+                ],
+                'next_page': '2018-08-02 08:24:01.180;48539871',
+                'type': 'list'}
+            payment = payment_facade.list({
+                'status': 'succeeded',
+                'limit': 1
+            })
+
+            self.assertIsInstance(payment, PaymentListResponse)
+            self.assertIsInstance(payment.items, list)
 
     def test_invalid_data(self):
         with self.assertRaises(ValueError):

@@ -1,6 +1,7 @@
 import unittest
 
 from yandex_checkout.domain.models.amount import Amount
+from yandex_checkout.domain.models.cancellation_details import CancellationDetails
 from yandex_checkout.domain.models.confirmation.confirmation import Confirmation
 from yandex_checkout.domain.models.payment_data.response.payment_data_bank_card import PaymentDataBankCard
 from yandex_checkout.domain.models.recipient import Recipient
@@ -43,6 +44,10 @@ class PaymentResponseTest(unittest.TestCase):
             "metadata": {
                 "float_value": "123.32",
                 "key": "data"
+            },
+            'cancellation_details': {
+                'party': 'yandex_checkout',
+                'reason': 'fraud_suspected'
             }
         })
 
@@ -50,6 +55,7 @@ class PaymentResponseTest(unittest.TestCase):
         self.assertIsInstance(response.recipient, Recipient)
         self.assertIsInstance(response.payment_method, PaymentDataBankCard)
         self.assertIsInstance(response.confirmation, Confirmation)
+        self.assertIsInstance(response.confirmation, CancellationDetails)
         self.assertEqual(response.metadata, {
             "float_value": "123.32",
             "key": "data"
@@ -60,8 +66,8 @@ class PaymentResponseTest(unittest.TestCase):
         self.assertEqual(response.created_at, "2017-11-30T15:11:33+00:00")
         self.assertEqual(response.expires_at, "2017-11-30T15:11:33+00:00")
         self.assertEqual(response.captured_at, "2017-11-30T15:11:33+00:00")
-        self.assertEqual(response.receipt_registration,  "pending")
+        self.assertEqual(response.receipt_registration, "pending")
         self.assertEqual(response.refunded_amount, {
-                "value": "1000.00",
-                "currency": "RUB"
-            })
+            "value": "1000.00",
+            "currency": "RUB"
+        })
