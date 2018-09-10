@@ -7,6 +7,8 @@ from yandex_checkout.domain.models.payment_data.request.payment_data_alfabank im
     PaymentDataAlfabank as RequestPaymentDataAlfabank
 from yandex_checkout.domain.models.payment_data.request.payment_data_applepay import \
     PaymentDataApplepay as RequestPaymentDataApplepay
+from yandex_checkout.domain.models.payment_data.request.payment_data_google_pay import \
+    PaymentDataGooglePay as RequestPaymentDataGooglePay
 from yandex_checkout.domain.models.payment_data.request.payment_data_cash import \
     PaymentDataCash as RequestPaymentDataCash
 from yandex_checkout.domain.models.payment_data.request.payment_data_bank_card import \
@@ -24,6 +26,8 @@ from yandex_checkout.domain.models.payment_data.response.payment_data_alfabank i
     PaymentDataAlfabank as ResponsePaymentDataAlfabank
 from yandex_checkout.domain.models.payment_data.response.payment_data_applepay import \
     PaymentDataApplepay as ResponsePaymentdataApplepay
+from yandex_checkout.domain.models.payment_data.response.payment_data_google_pay import \
+    PaymentDataGooglePay as ResponsePaymentDataGooglePay
 from yandex_checkout.domain.models.payment_data.response.payment_data_cash import \
     PaymentDataCash as ResponsePaymentDataCash
 from yandex_checkout.domain.models.payment_data.response.payment_data_bank_card import \
@@ -207,9 +211,23 @@ class PaymentDataTest(unittest.TestCase):
         self.assertEqual({'type': PaymentMethodType.APPLEPAY, 'payment_data': 'sampletoken'}, dict(payment_data))
 
         payment_data = ResponsePaymentdataApplepay()
-        payment_data.payment_data = 'sampletoken'
 
-        self.assertEqual({'type': PaymentMethodType.APPLEPAY, 'payment_data': 'sampletoken'}, dict(payment_data))
+        self.assertEqual({'type': PaymentMethodType.APPLEPAY}, dict(payment_data))
+
+    def test_google_pay_cast(self):
+        payment_data = RequestPaymentDataGooglePay()
+        payment_data.payment_method_token = 'sampletoken'
+        payment_data.google_transaction_id = 'sampleid'
+
+        self.assertEqual({
+            'type': PaymentMethodType.GOOGLE_PAY,
+            'payment_method_token': 'sampletoken',
+            'google_transaction_id': 'sampleid',
+        }, dict(payment_data))
+
+        payment_data = ResponsePaymentDataGooglePay()
+
+        self.assertEqual({'type': PaymentMethodType.GOOGLE_PAY}, dict(payment_data))
 
     def test_installments_cast(self):
         payment_data = RequestPaymentDataInstallments()
