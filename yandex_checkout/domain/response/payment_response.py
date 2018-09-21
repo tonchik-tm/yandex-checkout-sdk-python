@@ -1,6 +1,6 @@
-from yandex_checkout.domain.common.base_object import BaseObject
 from yandex_checkout.domain.common.response_object import ResponseObject
 from yandex_checkout.domain.models.amount import Amount
+from yandex_checkout.domain.models.authorization_details import AuthorizationDetails
 from yandex_checkout.domain.models.cancellation_details import CancellationDetails
 from yandex_checkout.domain.models.confirmation.confirmation_factory import ConfirmationFactory
 from yandex_checkout.domain.models.payment_data.payment_data_factory import PaymentDataFactory
@@ -42,6 +42,8 @@ class PaymentResponse(ResponseObject):
     __expires_at = None
 
     __cancellation_details = None
+
+    __authorization_details = None
 
     @property
     def id(self):
@@ -162,3 +164,11 @@ class PaymentResponse(ResponseObject):
     @cancellation_details.setter
     def cancellation_details(self, value):
         self.__cancellation_details = CancellationDetails(value)
+
+    @property
+    def authorization_details(self):
+        return self.__authorization_details
+
+    @authorization_details.setter
+    def authorization_details(self, value):
+        self.__authorization_details = AuthorizationDetails(value)

@@ -39,6 +39,8 @@ from yandex_checkout.domain.models.payment_data.response.payment_data_mobile_bal
     PaymentDataMobileBalance as ResponsePaymentDataMobileBalance
 from yandex_checkout.domain.models.payment_data.response.payment_data_sberbank import \
     PaymentDataSberbank as ResponsePaymentDataSberbank
+from yandex_checkout.domain.models.payment_data.response.payment_data_psb import \
+    PaymentDataPsb as ResponsePaymentDataPsb
 from yandex_checkout.domain.models.payment_data.response.payment_data_qiwi import \
     PaymentDataQiwi as ResponsePaymentDataQiwi
 from yandex_checkout.domain.models.payment_data.response.payment_data_webmoney import \
@@ -76,6 +78,7 @@ class PaymentDataClassMap(DataContext):
             PaymentMethodType.MOBILE_BALANCE: ResponsePaymentDataMobileBalance,
             PaymentMethodType.SBERBANK: ResponsePaymentDataSberbank,
             PaymentMethodType.YANDEX_MONEY: ResponsePaymentDataYandexWallet,
+            PaymentMethodType.PSB: ResponsePaymentDataPsb,
             PaymentMethodType.QIWI: ResponsePaymentDataQiwi,
             PaymentMethodType.WEBMONEY: ResponsePaymentDataWebmoney,
             PaymentMethodType.APPLEPAY: ResponsePaymentDataApplepay,

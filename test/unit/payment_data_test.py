@@ -40,6 +40,8 @@ from yandex_checkout.domain.models.payment_data.response.payment_data_sberbank i
     PaymentDataSberbank as ResponsePaymentDataSberbank
 from yandex_checkout.domain.models.payment_data.response.payment_data_qiwi import \
     PaymentDataQiwi as ResponsePaymentDataQiwi
+from yandex_checkout.domain.models.payment_data.response.payment_data_psb import \
+    PaymentDataPsb as ResponsePaymentDataPsb
 
 
 class PaymentDataTest(unittest.TestCase):
@@ -235,3 +237,7 @@ class PaymentDataTest(unittest.TestCase):
 
         payment_data = ResponcePaymentDataInstallments()
         self.assertEqual({'type': PaymentMethodType.INSTALMENTS}, dict(payment_data))
+
+    def test_psb_cast(self):
+        payment_data = ResponsePaymentDataPsb()
+        self.assertEqual({'type': PaymentMethodType.PSB}, dict(payment_data))
