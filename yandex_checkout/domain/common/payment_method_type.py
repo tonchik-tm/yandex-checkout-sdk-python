@@ -27,3 +27,4 @@ class PaymentMethodType:
     APPLEPAY = 'apple_pay'
     GOOGLE_PAY = 'google_pay'
     INSTALMENTS = 'installments'
+    B2B_SBERBANK = 'b2b_sberbank'
