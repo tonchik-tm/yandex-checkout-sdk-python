@@ -8,7 +8,7 @@ long_description = """
 
 setup(
     name="yandex_checkout",
-    version="1.0.7",
+    version="1.0.8",
     description="Yandex Checkout SDK Python Library",
     long_description=long_description,
     author="Yandex.Money",
