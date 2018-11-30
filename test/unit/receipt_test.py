@@ -3,7 +3,7 @@ import unittest
 from yandex_checkout.domain.models.amount import Amount
 from yandex_checkout.domain.models.currency import Currency
 from yandex_checkout.domain.models.receipt import Receipt
-from yandex_checkout.domain.models.receipt_item import ReceiptItem
+from yandex_checkout.domain.models.receipt_item import ReceiptItem, PaymentSubject, PaymentMode
 
 
 class ReceiptTest(unittest.TestCase):
@@ -55,7 +55,9 @@ class ReceiptTest(unittest.TestCase):
                     "value": 100.0,
                     "currency": Currency.RUB
                 },
-                "vat_code": 2
+                "vat_code": 2,
+                'payment_subject': PaymentSubject.AGENT_COMMISSION,
+                'payment_mode': PaymentMode.ADVANCE
             }
         ]}, dict(receipt))
 
@@ -78,7 +80,9 @@ class ReceiptTest(unittest.TestCase):
                         "value": 100.0,
                         "currency": Currency.RUB
                     },
-                    "vat_code": 2
+                    "vat_code": 2,
+                    "payment_subject": PaymentSubject.AGENT_COMMISSION,
+                    "payment_mode": PaymentMode.ADVANCE
                 }
             ]
 
@@ -99,7 +103,9 @@ class ReceiptTest(unittest.TestCase):
                 "value": 100.0,
                 "currency": Currency.RUB
             },
-            "vat_code": 2
+            "vat_code": 2,
+            "payment_subject": PaymentSubject.AGENT_COMMISSION,
+            "payment_mode": PaymentMode.ADVANCE
         }, dict(receipt_item))
 
         with self.assertRaises(TypeError):
