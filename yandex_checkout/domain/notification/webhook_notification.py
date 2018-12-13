@@ -1,4 +1,4 @@
-from yandex_checkout import RefundResponse
+from yandex_checkout.domain.response.refund_response import RefundResponse
 from yandex_checkout.domain.common.base_object import BaseObject
 from yandex_checkout.domain.response.payment_response import PaymentResponse
 
