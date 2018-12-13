@@ -9,3 +9,4 @@ class CardType:
     JCB = 'JCB'
     AMERICAN_EXPRESS = 'AmericanExpress'
     UNKNOWN = 'Unknown'
+    DINERS_CLUB = 'DinersClub'
