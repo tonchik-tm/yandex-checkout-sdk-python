@@ -5,6 +5,8 @@ from yandex_checkout.domain.models.payment_data.card_type import CardType
 
 
 class CreditCard(BaseObject):
+    __first6 = None
+
     __last4 = None
 
     __expiry_year = None
@@ -12,6 +14,18 @@ class CreditCard(BaseObject):
     __expiry_month = None
 
     __card_type = None
+
+    @property
+    def first6(self):
+        return self.__first6
+
+    @first6.setter
+    def first6(self, value):
+        cast_value = str(value)
+        if re.match('^[0-9]{6}$', cast_value):
+            self.__first6 = cast_value
+        else:
+            raise ValueError('Invalid first6 value')
 
     @property
     def last4(self):
