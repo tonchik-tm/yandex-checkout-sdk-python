@@ -21,7 +21,7 @@ class CreditCard(BaseObject):
     @number.setter
     def number(self, value):
         cast_value = str(value)
-        if re.match('^[0-9]{16,19}$', cast_value):
+        if re.match('^[0-9]{12,19}$', cast_value):
             self.__number = cast_value
         else:
             raise ValueError('Invalid card number value')
