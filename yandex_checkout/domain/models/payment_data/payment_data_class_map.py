@@ -20,6 +20,8 @@ from yandex_checkout.domain.models.payment_data.request.payment_data_sberbank im
     PaymentDataSberbank as RequestPaymentDataSberbank
 from yandex_checkout.domain.models.payment_data.request.payment_data_qiwi import \
     PaymentDataQiwi as RequestPaymentDataQiwi
+from yandex_checkout.domain.models.payment_data.request.payment_data_tinkoff_bank import \
+    PaymentDataTinkoffBank as RequestPaymentDataTinkoffBank
 from yandex_checkout.domain.models.payment_data.request.payment_data_webmoney import \
     PaymentDataWebmoney as RequestPaymentDataWebmoney
 from yandex_checkout.domain.models.payment_data.request.payment_data_yandex_wallet import \
@@ -47,6 +49,8 @@ from yandex_checkout.domain.models.payment_data.response.payment_data_psb import
     PaymentDataPsb as ResponsePaymentDataPsb
 from yandex_checkout.domain.models.payment_data.response.payment_data_qiwi import \
     PaymentDataQiwi as ResponsePaymentDataQiwi
+from yandex_checkout.domain.models.payment_data.response.payment_data_tinkoff_bank import \
+    PaymentDataTinkoffBank as ResponsePaymentDataTinkoffBank
 from yandex_checkout.domain.models.payment_data.response.payment_data_webmoney import \
     PaymentDataWebmoney as ResponsePaymentDataWebmoney
 from yandex_checkout.domain.models.payment_data.response.payment_data_yandex_wallet import \
@@ -71,7 +75,8 @@ class PaymentDataClassMap(DataContext):
             PaymentMethodType.APPLEPAY: RequestPaymentDataApplepay,
             PaymentMethodType.GOOGLE_PAY: RequestPaymentDataGooglePay,
             PaymentMethodType.INSTALMENTS: RequestPaymentDataInstallments,
-            PaymentMethodType.B2B_SBERBANK: RequestPaymentDataB2bSberbank
+            PaymentMethodType.B2B_SBERBANK: RequestPaymentDataB2bSberbank,
+            PaymentMethodType.TINKOFF_BANK: RequestPaymentDataTinkoffBank,
         }
 
     @property
@@ -89,5 +94,6 @@ class PaymentDataClassMap(DataContext):
             PaymentMethodType.APPLEPAY: ResponsePaymentDataApplepay,
             PaymentMethodType.GOOGLE_PAY: ResponsePaymentDataGooglePay,
             PaymentMethodType.INSTALMENTS: ResponcePaymentDataInstallments,
-            PaymentMethodType.B2B_SBERBANK: ResponsePaymentDataB2bSberbank
+            PaymentMethodType.B2B_SBERBANK: ResponsePaymentDataB2bSberbank,
+            PaymentMethodType.TINKOFF_BANK: ResponsePaymentDataTinkoffBank,
         }

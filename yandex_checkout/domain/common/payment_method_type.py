@@ -14,6 +14,8 @@ class PaymentMethodType:
     * yandex_checkout.domain.common.PaymentMethodType.APPLEPAY
     * yandex_checkout.domain.common.PaymentMethodType.GOOGLE_PAY
     * yandex_checkout.domain.common.PaymentMethodType.INSTALMENTS
+    * yandex_checkout.domain.common.PaymentMethodType.B2B_SBERBANK
+    * yandex_checkout.domain.common.PaymentMethodType.TINKOFF_BANK
     """
     YANDEX_MONEY = 'yandex_money'
     BANK_CARD = 'bank_card'
@@ -28,3 +30,4 @@ class PaymentMethodType:
     GOOGLE_PAY = 'google_pay'
     INSTALMENTS = 'installments'
     B2B_SBERBANK = 'b2b_sberbank'
+    TINKOFF_BANK = 'tinkoff_bank'
