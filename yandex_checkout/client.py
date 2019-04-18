@@ -1,5 +1,6 @@
 import requests
 from requests.adapters import HTTPAdapter
+from requests.auth import _basic_auth_str
 from urllib3 import Retry
 
 from yandex_checkout.configuration import Configuration
@@ -20,6 +21,7 @@ class ApiClient:
         self.configuration = Configuration.instantiate()
         self.shop_id = self.configuration.account_id
         self.shop_password = self.configuration.secret_key
+        self.auth_token = self.configuration.auth_token
         self.timeout = self.configuration.timeout
         self.max_attempts = self.configuration.max_attempts
 
@@ -42,8 +44,7 @@ class ApiClient:
                                        self.endpoint + path,
                                        params=query_params,
                                        headers=request_headers,
-                                       json=body,
-                                       auth=(self.shop_id, self.shop_password))
+                                       json=body)
         return raw_response
 
     def get_session(self):
@@ -57,6 +58,13 @@ class ApiClient:
 
     def prepare_request_headers(self, headers):
         request_headers = {'Content-type': 'application/json'}
+        if self.auth_token is not None:
+            auth_headers = {"Authorization": "Bearer " + self.auth_token}
+        else:
+            auth_headers = {"Authorization": _basic_auth_str(self.shop_id, self.shop_password)}
+
+        request_headers.update(auth_headers)
+
         if isinstance(headers, dict):
             request_headers.update(headers)
         return request_headers
