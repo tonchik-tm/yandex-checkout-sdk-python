@@ -214,7 +214,7 @@ class PaymentRequest(RequestObject):
             if self.payment_method_data:
                 self.__set_validation_error('Both payment_method_id and payment_data values are specified')
 
-        if self.payment_method_data.type == PaymentMethodType.BANK_CARD \
+        if self.payment_method_data and self.payment_method_data.type == PaymentMethodType.BANK_CARD  \
                 and self.payment_method_data.card is not None:
             # Get current date with an offset.
             # Why? Because expiration is relative to the transaction
