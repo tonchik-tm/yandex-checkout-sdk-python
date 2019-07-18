@@ -11,7 +11,7 @@ class ReceiptTest(unittest.TestCase):
         self.maxDiff = None
         receipt = Receipt()
         receipt.phone = '79990000000'
-        receipt.email = 'test@email'
+        receipt.email = 'test@email.com'
         receipt.tax_system_code = 1
         receipt.items = [
             {
@@ -31,35 +31,52 @@ class ReceiptTest(unittest.TestCase):
                         "value": 100.0,
                         "currency": Currency.RUB
                     },
-                    "vat_code": 2
+                    "vat_code": 2,
+                    "payment_subject": PaymentSubject.AGENT_COMMISSION,
+                    "payment_mode": PaymentMode.ADVANCE,
+                    "product_code": "00 00 00 01 00 21 FA 41 00 23 05 41 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 00 AB 00",
+                    "country_of_origin_code": "RU",
+                    "customs_declaration_number": "90/210",
+                    "excise": 2.00,
                 }
             )
 
         ]
 
         self.assertTrue(receipt.has_items())
-        self.assertEqual({'phone': '79990000000', 'email': 'test@email', 'tax_system_code': 1, 'items': [
-            {
-                "description": "Product 1",
-                "quantity": 2.0,
-                "amount": {
-                    "value": 250.0,
-                    "currency": Currency.RUB
-                },
-                "vat_code": 2
+        self.assertEqual({
+            'customer': {
+                'phone': '79990000000',
+                'email': 'test@email.com',
             },
-            {
-                "description": "Product 2",
-                "quantity": 1.0,
-                "amount": {
-                    "value": 100.0,
-                    "currency": Currency.RUB
+            'tax_system_code': 1,
+            'items': [
+                {
+                    "description": "Product 1",
+                    "quantity": 2.0,
+                    "amount": {
+                        "value": 250.0,
+                        "currency": Currency.RUB
+                    },
+                    "vat_code": 2
                 },
-                "vat_code": 2,
-                'payment_subject': PaymentSubject.AGENT_COMMISSION,
-                'payment_mode': PaymentMode.ADVANCE
-            }
-        ]}, dict(receipt))
+                {
+                    "description": "Product 2",
+                    "quantity": 1.0,
+                    "amount": {
+                        "value": 100.0,
+                        "currency": Currency.RUB
+                    },
+                    "vat_code": 2,
+                    'payment_subject': PaymentSubject.AGENT_COMMISSION,
+                    'payment_mode': PaymentMode.ADVANCE,
+                    "product_code": "00 00 00 01 00 21 FA 41 00 23 05 41 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 00 AB 00",
+                    "country_of_origin_code": "RU",
+                    "customs_declaration_number": "90/210",
+                    "excise": 2.00,
+                }
+            ]
+        }, dict(receipt))
 
         with self.assertRaises(TypeError):
             receipt.tax_system_code = 'invalid type'
@@ -82,7 +99,11 @@ class ReceiptTest(unittest.TestCase):
                     },
                     "vat_code": 2,
                     "payment_subject": PaymentSubject.AGENT_COMMISSION,
-                    "payment_mode": PaymentMode.ADVANCE
+                    "payment_mode": PaymentMode.ADVANCE,
+                    "product_code": "00 00 00 01 00 21 FA 41 00 23 05 41 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 00 AB 00",
+                    "country_of_origin_code": "RU",
+                    "customs_declaration_number": "90/210",
+                    "excise": 2.00,
                 }
             ]
 
@@ -95,6 +116,12 @@ class ReceiptTest(unittest.TestCase):
             "currency": Currency.RUB
         })
         receipt_item.vat_code = 2
+        receipt_item.payment_subject = PaymentSubject.AGENT_COMMISSION
+        receipt_item.payment_mode = PaymentMode.ADVANCE
+        receipt_item.product_code = '00 00 00 01 00 21 FA 41 00 23 05 41 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 00 AB 00'
+        receipt_item.country_of_origin_code = "RU"
+        receipt_item.customs_declaration_number = "90/210"
+        receipt_item.excise = 2.00
 
         self.assertEqual({
             "description": "Product",
@@ -105,7 +132,11 @@ class ReceiptTest(unittest.TestCase):
             },
             "vat_code": 2,
             "payment_subject": PaymentSubject.AGENT_COMMISSION,
-            "payment_mode": PaymentMode.ADVANCE
+            "payment_mode": PaymentMode.ADVANCE,
+            "product_code": "00 00 00 01 00 21 FA 41 00 23 05 41 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 00 AB 00",
+            "country_of_origin_code": "RU",
+            "customs_declaration_number": "90/210",
+            "excise": 2.00,
         }, dict(receipt_item))
 
         with self.assertRaises(TypeError):
