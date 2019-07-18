@@ -1,6 +1,5 @@
-import re
-
 from yandex_checkout.domain.common.base_object import BaseObject
+from yandex_checkout.domain.models.receipt_customer import ReceiptCustomer
 from yandex_checkout.domain.models.receipt_item import ReceiptItem
 
 
@@ -8,13 +7,22 @@ class Receipt(BaseObject):
     """
     Class representing receipt data wrapper object
     """
+    __customer = None
+
     __items = None
 
     __tax_system_code = None
 
-    __email = None
+    @property
+    def customer(self):
+        return self.__customer
 
-    __phone = None
+    @customer.setter
+    def customer(self, value):
+        if isinstance(value, ReceiptCustomer):
+            self.__customer = value
+        else:
+            raise TypeError('Invalid customer value type')
 
     @property
     def items(self):
@@ -49,23 +57,23 @@ class Receipt(BaseObject):
 
     @property
     def email(self):
-        return self.__email
+        return self.__customer.email if self.__customer is not None else None
 
     @email.setter
     def email(self, value):
-        self.__email = str(value)
+        if self.__customer is None:
+            self.__customer = ReceiptCustomer()
+        self.__customer.email = str(value)
 
     @property
     def phone(self):
-        return self.__phone
+        return self.__customer.phone if self.__customer is not None else None
 
     @phone.setter
     def phone(self, value):
-        cast_value = str(value)
-        if re.match('^[0-9]{4,15}$', cast_value):
-            self.__phone = cast_value
-        else:
-            raise ValueError('Invalid phone value type')
+        if self.__customer is None:
+            self.__customer = ReceiptCustomer()
+        self.__customer.phone = str(value)
 
     def has_items(self):
         return bool(self.items)

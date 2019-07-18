@@ -42,6 +42,8 @@ class PaymentResponseTest(unittest.TestCase):
             "expires_at": "2017-11-30T15:11:33+00:00",
             "captured_at": "2017-11-30T15:11:33+00:00",
             "paid": False,
+            "refundable": False,
+            "test": False,
             "metadata": {
                 "float_value": "123.32",
                 "key": "data"
@@ -67,6 +69,8 @@ class PaymentResponseTest(unittest.TestCase):
             "key": "data"
         })
         self.assertFalse(response.paid)
+        self.assertFalse(response.refundable)
+        self.assertFalse(response.test)
         self.assertEqual(response.id, "21b23365-000f-500b-9000-070fa3554403")
         self.assertEqual(response.status, "pending")
         self.assertEqual(response.created_at, "2017-11-30T15:11:33+00:00")

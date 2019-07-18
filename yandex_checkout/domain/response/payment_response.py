@@ -31,9 +31,13 @@ class PaymentResponse(ResponseObject):
 
     __confirmation = None
 
+    __test = None
+
     __refunded_amount = None
 
     __paid = None
+
+    __refundable = None
 
     __receipt_registration = None
 
@@ -118,6 +122,14 @@ class PaymentResponse(ResponseObject):
         self.__confirmation = ConfirmationFactory().create(value, self.context())
 
     @property
+    def test(self):
+        return self.__test
+
+    @test.setter
+    def test(self, value):
+        self.__test = bool(value)
+
+    @property
     def refunded_amount(self):
         return self.__refunded_amount
 
@@ -132,6 +144,14 @@ class PaymentResponse(ResponseObject):
     @paid.setter
     def paid(self, value):
         self.__paid = bool(value)
+
+    @property
+    def refundable(self):
+        return self.__refundable
+
+    @refundable.setter
+    def refundable(self, value):
+        self.__refundable = bool(value)
 
     @property
     def receipt_registration(self):

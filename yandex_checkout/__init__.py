@@ -17,10 +17,13 @@ from yandex_checkout.domain.request.payment_request_builder import PaymentReques
 from yandex_checkout.domain.request.refund_request import RefundRequest
 from yandex_checkout.domain.request.refund_request_builder import RefundRequestBuilder
 from yandex_checkout.domain.response.payment_response import PaymentResponse
+from yandex_checkout.domain.response.receipt_response import ReceiptResponse
+from yandex_checkout.domain.response.receipt_item_response import ReceiptItemResponse
 from yandex_checkout.domain.response.refund_response import RefundResponse
 from yandex_checkout.payment import Payment
 from yandex_checkout.refund import Refund
 from yandex_checkout.webhook import Webhook
+from yandex_checkout.receipt import Receipt
 from yandex_checkout.domain.request.webhook_request import WebhookRequest
 from yandex_checkout.domain.response.webhook_response import WebhookResponse, WebhookList
 from yandex_checkout.settings import Settings
