@@ -16,6 +16,7 @@ class PaymentMethodType:
     * yandex_checkout.domain.common.PaymentMethodType.INSTALMENTS
     * yandex_checkout.domain.common.PaymentMethodType.B2B_SBERBANK
     * yandex_checkout.domain.common.PaymentMethodType.TINKOFF_BANK
+    * yandex_checkout.domain.common.PaymentMethodType.WECHAT
     """
     YANDEX_MONEY = 'yandex_money'
     BANK_CARD = 'bank_card'
@@ -31,3 +32,4 @@ class PaymentMethodType:
     INSTALMENTS = 'installments'
     B2B_SBERBANK = 'b2b_sberbank'
     TINKOFF_BANK = 'tinkoff_bank'
+    WECHAT = 'wechat'
