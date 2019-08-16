@@ -26,6 +26,8 @@ from yandex_checkout.domain.models.payment_data.request.payment_data_webmoney im
     PaymentDataWebmoney as RequestPaymentDataWebmoney
 from yandex_checkout.domain.models.payment_data.request.payment_data_yandex_wallet import \
     PaymentDataYandexWallet as RequestPaymentDataYandexWallet
+from yandex_checkout.domain.models.payment_data.request.payment_data_wechat import \
+    PaymentDataWechat as RequestPaymentDataWechat
 
 from yandex_checkout.domain.models.payment_data.response.payment_data_alfabank import \
     PaymentDataAlfabank as ResponsePaymentDataAlfabank
@@ -55,6 +57,8 @@ from yandex_checkout.domain.models.payment_data.response.payment_data_webmoney i
     PaymentDataWebmoney as ResponsePaymentDataWebmoney
 from yandex_checkout.domain.models.payment_data.response.payment_data_yandex_wallet import \
     PaymentDataYandexWallet as ResponsePaymentDataYandexWallet
+from yandex_checkout.domain.models.payment_data.response.payment_data_wechat import \
+    PaymentDataWechat as ResponsePaymentDataWechat
 
 
 class PaymentDataClassMap(DataContext):
@@ -77,6 +81,7 @@ class PaymentDataClassMap(DataContext):
             PaymentMethodType.INSTALMENTS: RequestPaymentDataInstallments,
             PaymentMethodType.B2B_SBERBANK: RequestPaymentDataB2bSberbank,
             PaymentMethodType.TINKOFF_BANK: RequestPaymentDataTinkoffBank,
+            PaymentMethodType.WECHAT: RequestPaymentDataWechat,
         }
 
     @property
@@ -96,4 +101,5 @@ class PaymentDataClassMap(DataContext):
             PaymentMethodType.INSTALMENTS: ResponcePaymentDataInstallments,
             PaymentMethodType.B2B_SBERBANK: ResponsePaymentDataB2bSberbank,
             PaymentMethodType.TINKOFF_BANK: ResponsePaymentDataTinkoffBank,
+            PaymentMethodType.WECHAT: ResponsePaymentDataWechat,
         }
