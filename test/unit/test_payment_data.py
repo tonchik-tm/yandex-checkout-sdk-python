@@ -1,5 +1,6 @@
 import unittest
 
+from yandex_checkout import Currency
 from yandex_checkout.domain.common.payment_method_type import PaymentMethodType
 from yandex_checkout.domain.models.payment_data.card_type import CardType
 from yandex_checkout.domain.models.payment_data.request.credit_card import CreditCard as RequestCreditCard
@@ -19,6 +20,8 @@ from yandex_checkout.domain.models.payment_data.request.payment_data_mobile_bala
     PaymentDataMobileBalance as RequestPaymentDataMobileBalance
 from yandex_checkout.domain.models.payment_data.request.payment_data_sberbank import \
     PaymentDataSberbank as RequestPaymentDataSberbank
+from yandex_checkout.domain.models.payment_data.request.payment_data_b2b_sberbank import \
+    PaymentDataB2bSberbank as RequestPaymentDataB2bSberbank, VatDataType, VatDataRate, VatData
 from yandex_checkout.domain.models.payment_data.request.payment_data_qiwi import \
     PaymentDataQiwi as RequestPaymentDataQiwi
 from yandex_checkout.domain.models.payment_data.request.payment_data_wechat import \
@@ -41,6 +44,8 @@ from yandex_checkout.domain.models.payment_data.response.payment_data_mobile_bal
     PaymentDataMobileBalance as ResponsePaymentDataMobileBalance
 from yandex_checkout.domain.models.payment_data.response.payment_data_sberbank import \
     PaymentDataSberbank as ResponsePaymentDataSberbank
+from yandex_checkout.domain.models.payment_data.response.payment_data_b2b_sberbank import \
+    PaymentDataB2bSberbank as ResponsePaymentDataB2bSberbank
 from yandex_checkout.domain.models.payment_data.response.payment_data_qiwi import \
     PaymentDataQiwi as ResponsePaymentDataQiwi
 from yandex_checkout.domain.models.payment_data.response.payment_data_psb import \
@@ -210,6 +215,63 @@ class TestPaymentData(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             payment_data.phone = 'invalid phone'
+
+    def test_b2b_sberbank_cast(self):
+        payment_data = RequestPaymentDataB2bSberbank()
+        payment_data.type = PaymentMethodType.B2B_SBERBANK
+        payment_data.payment_purpose = 'Test test test'
+        payment_data.vat_data = {
+            'type': VatDataType.MIXED,
+            'rate': VatDataRate.RATE_20,
+            'amount': {'value': 10, 'currency': Currency.RUB}
+        }
+
+        self.assertEqual({
+            'type': PaymentMethodType.B2B_SBERBANK,
+            'payment_purpose': 'Test test test',
+            'vat_data': {
+                'type': VatDataType.MIXED,
+                'rate': VatDataRate.RATE_20,
+                'amount': {'value': 10.0, 'currency': Currency.RUB}
+            }
+        }, dict(payment_data))
+
+        with self.assertRaises(ValueError):
+            payment_data.vat_data.type = 'VatDataType.MIXED'
+
+        with self.assertRaises(ValueError):
+            payment_data.vat_data.rate = 9
+
+        payment_data = ResponsePaymentDataB2bSberbank()
+        payment_data.type = PaymentMethodType.B2B_SBERBANK
+        payment_data.payment_purpose = 'Test test test'
+        payment_data.vat_data = {
+            'type': VatDataType.MIXED,
+            'rate': VatDataRate.RATE_20,
+            'amount': {'value': 10, 'currency': Currency.RUB}
+        }
+
+        self.assertEqual({
+            'type': PaymentMethodType.B2B_SBERBANK,
+            'payment_purpose': 'Test test test',
+            'vat_data': {
+                'type': VatDataType.MIXED,
+                'rate': VatDataRate.RATE_20,
+                'amount': {'value': 10.0, 'currency': Currency.RUB}
+            }
+        }, dict(payment_data))
+
+        with self.assertRaises(ValueError):
+            payment_data.vat_data = {
+                'type': VatDataType.MIXED,
+                'rate': 'invalid rate'
+            }
+
+        with self.assertRaises(ValueError):
+            payment_data.vat_data = {
+                'type': 'invalid type',
+                'rate': VatDataRate.RATE_20
+            }
 
     def test_applepay_cast(self):
         payment_data = RequestPaymentDataApplepay()
