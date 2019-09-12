@@ -52,7 +52,10 @@ class VatData(BaseObject):
 
     @type.setter
     def type(self, value):
-        self.__type = str(value)
+        if value in VatDataType.__dict__.values():
+            self.__type = str(value)
+        else:
+            raise ValueError('Invalid type value')
 
     @property
     def rate(self):
@@ -60,7 +63,10 @@ class VatData(BaseObject):
 
     @rate.setter
     def rate(self, value):
-        self.__rate = str(value)
+        if value in VatDataRate.__dict__.values():
+            self.__rate = int(value)
+        else:
+            raise ValueError('Invalid rate value')
 
     @property
     def amount(self):
@@ -78,4 +84,15 @@ class VatData(BaseObject):
 
 class VatDataType:
     CALCULATED = 'calculated'
+    MIXED = 'mixed'
     UNTAXED = 'untaxed'
+
+
+class VatDataRate:
+    """
+        Class representing rates available types enum
+    """
+    RATE_7 = 7
+    RATE_10 = 10
+    RATE_18 = 18
+    RATE_20 = 20

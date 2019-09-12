@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import unittest
 
 from yandex_checkout.domain.common.confirmation_type import ConfirmationType
@@ -14,13 +16,14 @@ class TestConfirmation(unittest.TestCase):
     def test_confirmation_request(self):
         confirmation = RequestConfirmationRedirect()
         confirmation.type = ConfirmationType.REDIRECT
+        confirmation.locale = 'ru_RU'
         confirmation.enforce = True
         confirmation.return_url = 'return.url'
 
         self.assertEqual(confirmation.type, ConfirmationType.REDIRECT)
         self.assertTrue(confirmation.enforce)
         self.assertEqual(
-            {'type': ConfirmationType.REDIRECT, 'enforce': True, 'return_url': 'return.url'},
+            {'type': ConfirmationType.REDIRECT, 'locale': 'ru_RU', 'enforce': True, 'return_url': 'return.url'},
             dict(confirmation)
         )
 

@@ -1,5 +1,10 @@
 # Yandex.Checkout API Python Client Library
 
+[![Build Status](https://travis-ci.org/yandex-money/yandex-checkout-sdk-python.svg?branch=master)](https://travis-ci.org/yandex-money/yandex-checkout-sdk-python)
+[![Latest Stable Version](https://img.shields.io/pypi/v/yandex-checkout.svg)](https://pypi.org/project/yandex-checkout/)
+[![Total Downloads](https://img.shields.io/pypi/dm/yandex-checkout.svg)](https://pypi.org/project/yandex-checkout/)
+[![License](https://img.shields.io/pypi/l/yandex-checkout.svg)](https://github.com/yandex-money/yandex-checkout-sdk-python)
+
 Russian | [English](https://github.com/yandex-money/yandex-checkout-sdk-python/blob/master/README.en.md)
 
 Клиент для работы с платежами по [API Яндекс.Кассы](https://kassa.yandex.ru/docs/checkout-api/)

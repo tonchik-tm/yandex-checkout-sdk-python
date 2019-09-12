@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
+
 from yandex_checkout.domain.common.confirmation_type import ConfirmationType
-from yandex_checkout.domain.models.confirmation.confirmation import Confirmation
+from yandex_checkout.domain.models.confirmation.request.confirmation_request import ConfirmationRequest
 
 
-class ConfirmationRedirect(Confirmation):
+class ConfirmationRedirect(ConfirmationRequest):
     """
     Class representing redirect confirmation data object
     """

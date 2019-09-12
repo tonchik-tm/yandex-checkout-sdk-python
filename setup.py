@@ -3,14 +3,16 @@ try:
 except ImportError:
     from distutils.core import setup
 
-long_description = """
-      """
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name="yandex_checkout",
-    version="1.3.0",
+    version="1.4.0",
     description="Yandex Checkout SDK Python Library",
     long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/yandex-money/yandex-checkout-sdk-python",
     author="Yandex.Money",
     packages=["yandex_checkout", "yandex_checkout.domain.request", "yandex_checkout.domain.response",
               "yandex_checkout.domain.notification", "yandex_checkout.domain.models", "yandex_checkout.domain",
@@ -23,10 +25,11 @@ setup(
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5"
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7"
     ]
 )
