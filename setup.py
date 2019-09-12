@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
+
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
-with open("README.md", "r") as fh:
+with open("README.en.md", "r") as fh:
     long_description = fh.read()
 
 setup(
