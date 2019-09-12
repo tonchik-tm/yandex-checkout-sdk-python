@@ -14,6 +14,8 @@ from yandex_checkout.domain.request.capture_payment_builder import CapturePaymen
 from yandex_checkout.domain.request.capture_payment_request import CapturePaymentRequest
 from yandex_checkout.domain.request.payment_request import PaymentRequest
 from yandex_checkout.domain.request.payment_request_builder import PaymentRequestBuilder
+from yandex_checkout.domain.request.receipt_request import ReceiptRequest
+from yandex_checkout.domain.request.receipt_request_builder import ReceiptRequestBuilder
 from yandex_checkout.domain.request.refund_request import RefundRequest
 from yandex_checkout.domain.request.refund_request_builder import RefundRequestBuilder
 from yandex_checkout.domain.response.payment_response import PaymentResponse
@@ -27,3 +29,5 @@ from yandex_checkout.receipt import Receipt
 from yandex_checkout.domain.request.webhook_request import WebhookRequest
 from yandex_checkout.domain.response.webhook_response import WebhookResponse, WebhookList
 from yandex_checkout.settings import Settings
+
+__version__ = '1.4.0'

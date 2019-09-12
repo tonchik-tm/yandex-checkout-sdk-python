@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from yandex_checkout.domain.common.base_object import BaseObject
 from yandex_checkout.domain.models.receipt_customer import ReceiptCustomer
 from yandex_checkout.domain.models.receipt_item import ReceiptItem
@@ -19,6 +21,8 @@ class Receipt(BaseObject):
 
     @customer.setter
     def customer(self, value):
+        if isinstance(value, dict):
+            self.__customer = ReceiptCustomer(value)
         if isinstance(value, ReceiptCustomer):
             self.__customer = value
         else:

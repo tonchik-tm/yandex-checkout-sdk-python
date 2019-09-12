@@ -1,3 +1,4 @@
+from yandex_checkout.domain.models.settlement import Settlement
 from yandex_checkout.domain.response.receipt_item_response import ReceiptItemResponse
 from yandex_checkout.domain.common.response_object import ResponseObject
 
@@ -31,6 +32,8 @@ class ReceiptResponse(ResponseObject):
     __tax_system_code = None
 
     __items = None
+
+    __settlements = None
 
     @property
     def id(self):
@@ -138,3 +141,14 @@ class ReceiptResponse(ResponseObject):
             self.__items = [ReceiptItemResponse(item) for item in value]
         else:
             self.__items = value
+
+    @property
+    def settlements(self):
+        return self.__settlements
+
+    @settlements.setter
+    def settlements(self, value):
+        if isinstance(value, list):
+            self.__settlements = [Settlement(item) for item in value]
+        else:
+            self.__settlements = value

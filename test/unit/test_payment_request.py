@@ -48,7 +48,7 @@ class TestPaymentRequest(unittest.TestCase):
         ]})
         request.payment_method_id = '123'
         request.payment_token = '99091209012'
-        request.confirmation = ConfirmationRedirect({'return_url': 'return.url'})
+        request.confirmation = ConfirmationRedirect({'locale': 'ru_RU', 'return_url': 'return.url'})
         request.client_ip = '192.0.0.0'
         request.metadata = {'key': 'value'}
 
@@ -89,7 +89,7 @@ class TestPaymentRequest(unittest.TestCase):
                 ]},
             'payment_method_id': '123',
             'payment_token': '99091209012',
-            'confirmation': {'type': ConfirmationType.REDIRECT, 'return_url': 'return.url'},
+            'confirmation': {'type': ConfirmationType.REDIRECT, 'locale': 'ru_RU', 'return_url': 'return.url'},
             'client_ip': '192.0.0.0',
             'metadata': {'key': 'value'}
         }, dict(request))

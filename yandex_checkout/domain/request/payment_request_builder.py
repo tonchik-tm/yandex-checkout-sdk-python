@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from yandex_checkout.domain.request.payment_request import PaymentRequest
 
 
