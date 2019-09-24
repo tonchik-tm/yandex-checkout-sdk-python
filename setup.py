@@ -76,7 +76,7 @@ Configuration.secret_key = <Secret Key>
 
 setup(
     name="yandex_checkout",
-    version="1.4.5",
+    version="1.4.6",
     description="Yandex Checkout SDK Python Library",
     long_description=long_description,
     long_description_content_type="text/markdown",

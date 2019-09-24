@@ -23,7 +23,7 @@ class Receipt(BaseObject):
     def customer(self, value):
         if isinstance(value, dict):
             self.__customer = ReceiptCustomer(value)
-        if isinstance(value, ReceiptCustomer):
+        elif isinstance(value, ReceiptCustomer):
             self.__customer = value
         else:
             raise TypeError('Invalid customer value type')
