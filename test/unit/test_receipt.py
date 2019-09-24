@@ -3,6 +3,7 @@ import unittest
 from yandex_checkout.domain.models.amount import Amount
 from yandex_checkout.domain.models.currency import Currency
 from yandex_checkout.domain.models.receipt import Receipt
+from yandex_checkout.domain.models.receipt_customer import ReceiptCustomer
 from yandex_checkout.domain.models.receipt_item import ReceiptItem, PaymentSubject, PaymentMode
 
 
@@ -79,6 +80,10 @@ class TestReceipt(unittest.TestCase):
                 }
             ]
         }, dict(receipt))
+
+        customer = ReceiptCustomer({'phone': '79990000000', 'email': 'test@email.com'})
+        self.assertEqual({'phone': '79990000000', 'email': 'test@email.com'}, dict(receipt.customer))
+        self.assertEqual(dict(customer), dict(receipt.customer))
 
         with self.assertRaises(TypeError):
             receipt.tax_system_code = 'invalid type'
