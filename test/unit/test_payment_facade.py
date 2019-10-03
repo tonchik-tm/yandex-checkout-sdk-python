@@ -1,6 +1,11 @@
+import sys
 import unittest
 
-from unittest.mock import patch
+if sys.version_info >= (3, 3):
+    from unittest.mock import patch
+else:
+    from mock import patch
+
 from yandex_checkout.configuration import Configuration
 from yandex_checkout.domain.models.amount import Amount
 from yandex_checkout.domain.models.payment_data.response.payment_data_bank_card import PaymentDataBankCard
@@ -9,8 +14,6 @@ from yandex_checkout.domain.request.payment_request import PaymentRequest
 from yandex_checkout.domain.response.payment_list_responce import PaymentListResponse
 from yandex_checkout.domain.response.payment_response import PaymentResponse
 from yandex_checkout.payment import Payment
-
-import yandex_checkout.client
 
 
 class TestPaymentFacade(unittest.TestCase):

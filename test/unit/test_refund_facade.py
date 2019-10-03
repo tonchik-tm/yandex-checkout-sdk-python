@@ -1,10 +1,15 @@
+import sys
 import unittest
+
+if sys.version_info >= (3, 3):
+    from unittest.mock import patch
+else:
+    from mock import patch
 
 from yandex_checkout.domain.models.amount import Amount
 from yandex_checkout.domain.request.refund_request import RefundRequest
 from yandex_checkout.domain.response.refund_response import RefundResponse
 from yandex_checkout.refund import Refund
-from unittest.mock import patch
 
 
 class TestRefundFacade(unittest.TestCase):
