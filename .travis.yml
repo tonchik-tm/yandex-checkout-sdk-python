@@ -1,7 +1,5 @@
 language: python
 python:
-  - "2.6"
-  - "2.7"
   - "3.4"
   - "3.5"
   - "3.5-dev"  # 3.5 development branch
@@ -11,27 +9,25 @@ python:
   - "3.7-dev"  # 3.7 development branch
 matrix:
   include:
-    - python: 2.6
-      before_install:
-        - python -m pip install mock
     - python: 2.7
       before_install:
-        - python -m pip install mock
-    - name: "Python 3.7.1 on Xenial Linux"
-      python: 3.7           # this works for Linux but is ignored on macOS or Windows
+        - pip install mock
     - name: "Python 3.7.4 on macOS"
       os: osx
-      osx_image: xcode11    # Python 3.7.4 running on macOS 10.14.4
-      language: shell       # 'language: python' is an error on Travis CI macOS
+#      osx_image: xcode11    # Python 3.7.4 running on macOS 10.14.4
+#      language: shell       # 'language: python' is an error on Travis CI macOS
+      language: minimal
       before_install:
-        - pip install -U pytest
+        - pip3 install -U pip
+        - pip3 install -U pytest
     - name: "Python 3.7.4 on Windows"
       os: windows           # Windows 10.0.17134 N/A Build 17134
-      language: shell       # 'language: python' is an error on Travis CI Windows
+#      language: shell       # 'language: python' is an error on Travis CI Windows
+      language: minimal
       before_install:
-        - choco install python
-        - python -m pip install --upgrade pip
-        - pip install -U pytest
+        - choco install python3
+#        - python -m pip install --upgrade pip
+        - pip3 install -U pytest
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
 # command to install dependencies
 install:
