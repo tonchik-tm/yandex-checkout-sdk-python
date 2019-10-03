@@ -1,0 +1,14 @@
+# Misc
+.idea
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+
+# Unit test / coverage reports
+.coverage
+.pytest_cache
+.tox
