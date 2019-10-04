@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 from requests.adapters import HTTPAdapter
 from requests.auth import _basic_auth_str

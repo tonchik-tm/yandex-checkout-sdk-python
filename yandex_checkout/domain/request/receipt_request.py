@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from yandex_checkout import ReceiptItem
 from yandex_checkout.domain.common.receipt_type import ReceiptType
 from yandex_checkout.domain.common.request_object import RequestObject

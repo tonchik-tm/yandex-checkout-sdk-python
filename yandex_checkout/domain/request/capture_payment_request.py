@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from yandex_checkout.domain.common.request_object import RequestObject
 from yandex_checkout.domain.models.amount import Amount
 from yandex_checkout.domain.models.receipt import Receipt

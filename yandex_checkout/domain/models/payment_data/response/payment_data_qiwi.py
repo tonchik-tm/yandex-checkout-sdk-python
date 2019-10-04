@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import re
 
 from yandex_checkout.domain.common.payment_method_type import PaymentMethodType

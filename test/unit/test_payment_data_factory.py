@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import unittest
 
 from yandex_checkout.domain.common.data_context import DataContext

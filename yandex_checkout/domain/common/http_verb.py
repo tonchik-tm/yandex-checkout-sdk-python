@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 class HttpVerb(object):
     """
     Constants representing http method verbs. Available values are:

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import unittest
 
 from yandex_checkout import Currency, ReceiptItem

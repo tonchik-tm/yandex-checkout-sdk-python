@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import unittest
 
 from yandex_checkout.domain.common.confirmation_type import ConfirmationType

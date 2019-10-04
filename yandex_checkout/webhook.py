@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import uuid
 
 from yandex_checkout.domain.common.http_verb import HttpVerb

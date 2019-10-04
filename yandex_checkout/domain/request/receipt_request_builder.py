@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from yandex_checkout.domain.request.receipt_request import ReceiptRequest
 
 

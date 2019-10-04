@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from yandex_checkout.domain.common.context import Context
 
 

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from datetime import datetime, timedelta
 from yandex_checkout.domain.common.payment_method_type import PaymentMethodType
 

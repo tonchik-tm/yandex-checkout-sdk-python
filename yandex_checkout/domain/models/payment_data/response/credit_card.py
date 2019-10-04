@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import re
 
 from yandex_checkout.domain.common.base_object import BaseObject

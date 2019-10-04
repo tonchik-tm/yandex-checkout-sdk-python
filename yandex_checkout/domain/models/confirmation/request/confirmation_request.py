@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from yandex_checkout.domain.models.confirmation.confirmation import Confirmation
 
 

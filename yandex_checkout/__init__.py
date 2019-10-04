@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from yandex_checkout.configuration import Configuration
 from yandex_checkout.domain.exceptions.api_error import ApiError
 from yandex_checkout.domain.exceptions.authorize_error import AuthorizeError

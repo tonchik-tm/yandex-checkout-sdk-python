@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from yandex_checkout.domain.common.request_object import RequestObject
 
 

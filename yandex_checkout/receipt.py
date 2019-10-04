@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import uuid
 
 from yandex_checkout import PaymentResponse, ReceiptResponse

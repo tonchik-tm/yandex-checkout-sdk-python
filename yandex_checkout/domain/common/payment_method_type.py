@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 class PaymentMethodType:
     """
     Constants representing payment_method_data values. Available values are:

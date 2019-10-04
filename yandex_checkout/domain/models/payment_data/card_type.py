@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 class CardType:
     """
     Class representing credit cards available types enum

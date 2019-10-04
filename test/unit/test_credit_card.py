@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import unittest
 
 from yandex_checkout.domain.models.payment_data.card_type import CardType

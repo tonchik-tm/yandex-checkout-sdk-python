@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 from yandex_checkout.domain.common.payment_method_type import PaymentMethodType
-
 from yandex_checkout.domain.models.payment_data.payment_data import ResponsePaymentData
 
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from yandex_checkout.domain.common.confirmation_type import ConfirmationType
 from yandex_checkout.domain.common.data_context import DataContext
 from yandex_checkout.domain.models.confirmation.request.confirmation_embedded import \

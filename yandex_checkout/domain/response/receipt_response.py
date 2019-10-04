@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from yandex_checkout.domain.models.settlement import Settlement
 from yandex_checkout.domain.response.receipt_item_response import ReceiptItemResponse
 from yandex_checkout.domain.common.response_object import ResponseObject

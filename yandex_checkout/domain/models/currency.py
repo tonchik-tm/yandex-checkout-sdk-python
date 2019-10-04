@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 class Currency(object):
     """
     Class representing currency enum
