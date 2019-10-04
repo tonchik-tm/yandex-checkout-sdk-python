@@ -6,6 +6,7 @@ from urllib3 import Retry
 
 from yandex_checkout.configuration import Configuration
 from yandex_checkout.domain.common.request_object import RequestObject
+from yandex_checkout.domain.common.user_agent import UserAgent
 from yandex_checkout.domain.exceptions.api_error import ApiError
 from yandex_checkout.domain.exceptions.bad_request_error import BadRequestError
 from yandex_checkout.domain.exceptions.forbidden_error import ForbiddenError
@@ -25,6 +26,14 @@ class ApiClient:
         self.auth_token = self.configuration.auth_token
         self.timeout = self.configuration.timeout
         self.max_attempts = self.configuration.max_attempts
+
+        self.user_agent = UserAgent()
+        if self.configuration.agent_framework:
+            self.user_agent.framework = self.configuration.agent_framework
+        if self.configuration.agent_cms:
+            self.user_agent.cms = self.configuration.agent_cms
+        if self.configuration.agent_module:
+            self.user_agent.module = self.configuration.agent_module
 
     def request(self, method="", path="", query_params=None, headers=None, body=None):
         if isinstance(body, RequestObject):
@@ -65,6 +74,8 @@ class ApiClient:
             auth_headers = {"Authorization": _basic_auth_str(self.shop_id, self.shop_password)}
 
         request_headers.update(auth_headers)
+
+        request_headers.update({"YM-User-Agent": self.user_agent.get_header_string()})
 
         if isinstance(headers, dict):
             request_headers.update(headers)

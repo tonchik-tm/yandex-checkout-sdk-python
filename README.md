@@ -51,7 +51,7 @@ import yandex_checkout
 ```python
 from yandex_checkout import Configuration
 
-Configuration.configure(<Идентификатор магазина>,<Секретный ключ>)
+Configuration.configure('<Идентификатор магазина>', '<Секретный ключ>')
 ```
 
 или
@@ -59,9 +59,31 @@ Configuration.configure(<Идентификатор магазина>,<Секр�
 ```python
 from yandex_checkout import Configuration
 
-Configuration.account_id = <Идентификатор магазина>
-Configuration.secret_key = <Секретный ключ>
+Configuration.account_id = '<Идентификатор магазина>'
+Configuration.secret_key = '<Секретный ключ>'
 ```
+
+или через oauth
+
+```python
+from yandex_checkout import Configuration
+
+Configuration.configure_auth_token('<Oauth Token>')
+```
+
+Если вы согласны участвовать в развитии SDK, вы можете передать данные о вашем фреймворке, cms или модуле:
+```python
+from yandex_checkout import Configuration
+from yandex_checkout.domain.common.user_agent import Version
+
+Configuration.configure('<Идентификатор магазина>', '<Секретный ключ>')
+Configuration.configure_user_agent(
+    framework=Version('Django', '2.2.3'),
+    cms=Version('Wagtail', '2.6.2'),
+    module=Version('Y.CMS', '0.0.1')
+)
+```
+
 3. Вызовите нужный метод API. [Подробнее в документации к API Яндекс.Кассы](https://kassa.yandex.ru/docs/checkout-api/)
 
 

@@ -52,7 +52,7 @@ import yandex_checkout
 ```python
 from yandex_checkout import Configuration
 
-Configuration.configure(<Account Id>,<Secret Key>)
+Configuration.configure('<Account Id>', '<Secret Key>')
 ```
 
 or
@@ -60,8 +60,30 @@ or
 ```python
 from yandex_checkout import Configuration
 
-Configuration.account_id = <Account Id>
-Configuration.secret_key = <Secret Key>
+Configuration.account_id = '<Account Id>'
+Configuration.secret_key = '<Secret Key>'
 ```
-3. Call the required API method. [More details in our documentation for the Yandex.Chechout API](url)
+
+or via oauth
+
+```python
+from yandex_checkout import Configuration
+
+Configuration.configure_auth_token('<Oauth Token>')
+```
+
+If you agree to participate in the development of the SDK, you can submit data about your framework, cms or module:
+
+```python
+from yandex_checkout import Configuration
+from yandex_checkout.domain.common.user_agent import Version
+
+Configuration.configure('<Account Id>', '<Secret Key>')
+Configuration.configure_user_agent(
+    framework=Version('Django', '2.2.3'),
+    cms=Version('Wagtail', '2.6.2'),
+    module=Version('Y.CMS', '0.0.1')
+)
+```
+3. Call the required API method. [More details in our documentation for the Yandex.Checkout API](url)
 

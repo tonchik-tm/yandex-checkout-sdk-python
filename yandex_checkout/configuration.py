@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+from yandex_checkout.domain.common.user_agent import Version
+
+
 class ConfigurationError(Exception):
     pass
 
@@ -13,6 +16,9 @@ class Configuration(object):
     timeout = 1800
     max_attempts = 3
     auth_token = None
+    agent_framework = None
+    agent_cms = None
+    agent_module = None
 
     def __init__(self, **kwargs):
         self.assert_has_api_credentials()
@@ -32,6 +38,15 @@ class Configuration(object):
         Configuration.auth_token = token
         Configuration.timeout = kwargs.get("timeout", 1800)
         Configuration.max_attempts = kwargs.get("max_attempts", 3)
+
+    @staticmethod
+    def configure_user_agent(framework=None, cms=None, module=None):
+        if isinstance(framework, Version):
+            Configuration.agent_framework = framework
+        if isinstance(cms, Version):
+            Configuration.agent_cms = cms
+        if isinstance(module, Version):
+            Configuration.agent_module = module
 
     @staticmethod
     def instantiate():
